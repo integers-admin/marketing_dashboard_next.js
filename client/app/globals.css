@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MARKETING COMMAND CENTER — design tokens
+   Tuned for a 72" 4K TV, fluid down to a laptop.
+   Typography scales with viewport width (vw) so text grows
+   automatically on bigger screens while staying readable.
+   ============================================================ */
+:root {
+  /* Surface palette (deep navy / slate — industry-standard dashboard base) */
+  --bg-0: #070b16;
+  --bg-1: #0b1222;
+  --bg-2: #131d33;
+
+  /* Brand + accents (Integers turquoise) */
+  --brand: #00CEC9;
+  --brand-2: #38bdf8;
+  --emerald: #34d399;
+  --emerald-deep: #04c56b;
+  --cyan: #22d3ee;
+  --sky: #38bdf8;
+  --blue: #4b7bf5;
+  --rose: #fb7185;
+  --amber: #fbbf24;
+  --violet: #a78bfa;
+
+  /* Text — high contrast for distance reading on a TV */
+  --text-strong: #ffffff;
+  --text: #e6edf6;
+  --text-muted: #9fb1c7;
+
+  /* Glass cards */
+  --card-bg: rgba(22, 32, 53, 0.66);
+  --card-bg-deep: rgba(13, 20, 36, 0.72);
+  --card-border: rgba(148, 170, 200, 0.18);
+  --card-border-strong: rgba(0, 206, 201, 0.40);
+  --card-shadow: 0 14px 46px -16px rgba(0, 0, 0, 0.7);
+
+  /* Fluid type scale: clamp(min, viewport, max) */
+  --fs-micro: clamp(0.55rem, 0.55vw, 1.05rem);
+  --fs-small: clamp(0.7rem, 0.72vw, 1.35rem);
+  --fs-label: clamp(0.78rem, 0.85vw, 1.6rem);
+  --fs-body: clamp(0.9rem, 1vw, 1.9rem);
+  --fs-h2: clamp(1rem, 1.15vw, 2.2rem);
+  --fs-value: clamp(1.25rem, 1.7vw, 3.2rem);
+  --fs-value-xl: clamp(1.6rem, 2.2vw, 4.2rem);
+  --fs-display: clamp(1.2rem, 1.5vw, 2.8rem);
+}
+
+/* ---------------- Base ---------------- */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: var(--text);
+  background: var(--bg-0);
+  overflow: hidden;
+}
+
+/* Animated ambient background — drifting color orbs behind the grid */
+.app-bg {
+  position: relative;
+  background:
+    radial-gradient(circle at 16% 10%, rgba(0, 206, 201, 0.16), transparent 42%),
+    radial-gradient(circle at 84% 14%, rgba(56, 189, 248, 0.14), transparent 45%),
+    radial-gradient(circle at 72% 90%, rgba(167, 139, 250, 0.13), transparent 45%),
+    radial-gradient(circle at 24% 88%, rgba(75, 123, 245, 0.12), transparent 45%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-0) 72%);
+  background-attachment: fixed;
+}
+
+.app-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0, 206, 201, 0.09), transparent 55%);
+  animation: ambient 14s ease-in-out infinite alternate;
+}
+
+/* ---------------- Glass card system ---------------- */
+/* .dark and .dark-card are reused across components — upgrading them
+   restyles the whole dashboard consistently. */
+.dark {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: var(--card-shadow);
+  position: relative;
+}
+
+/* hairline top highlight on every glass card */
+.dark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 206, 201, 0.55),
+    transparent
+  );
+}
+
+.dark-card {
+  background: var(--card-bg-deep);
+  color: var(--text);
+  border: 1px solid rgba(148, 170, 200, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ---------------- Typography helpers ---------------- */
+.t-display { font-size: var(--fs-display); }
+.t-h2 { font-size: var(--fs-h2); }
+.t-body { font-size: var(--fs-body); }
+.t-label { font-size: var(--fs-label); }
+.t-small { font-size: var(--fs-small); }
+.t-micro { font-size: var(--fs-micro); }
+.t-value { font-size: var(--fs-value); line-height: 1.05; }
+.t-value-xl { font-size: var(--fs-value-xl); line-height: 1; }
+
+.text-muted-2 { color: var(--text-muted); }
+.text-strong { color: var(--text-strong); }
+
+/* Gradient text accents */
+.gradient-text {
+  background-image: linear-gradient(
+    100deg,
+    #38bdf8,
+    #a78bfa 45%,
+    #00CEC9 85%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer-text 8s linear infinite;
+}
+
+/* primary brand value highlight — follows the active brand accent */
+.gradient-emerald {
+  background-image: linear-gradient(100deg, var(--accent, #00CEC9), var(--accent2, #38bdf8));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ---------------- Live indicator ---------------- */
+.live-dot {
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 9999px;
+  background: var(--emerald);
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+  animation: pulse-dot 1.8s ease-out infinite;
+}
+
+/* colored stat chips for KPI industries */
+.stat-chip {
+  position: relative;
+  overflow: hidden;
+}
+.stat-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, currentColor, transparent 70%);
+  opacity: 0.12;
+}
+
+/* card entrance + accent bar on the left of section cards */
+.accent-l {
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, var(--emerald), var(--cyan)) 1;
+}
+
+/* ---------------- Entrance animations ---------------- */
+.enter {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.d1 { animation-delay: 0.05s; }
+.d2 { animation-delay: 0.12s; }
+.d3 { animation-delay: 0.19s; }
+.d4 { animation-delay: 0.26s; }
+.d5 { animation-delay: 0.33s; }
+.d6 { animation-delay: 0.40s; }
+.d7 { animation-delay: 0.47s; }
+
+/* number reveal for KPI values */
+.count-pop {
+  animation: pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------------- Keyframes ---------------- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes pop {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6); }
+  70% { box-shadow: 0 0 0 0.7em rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+@keyframes shimmer-text {
+  to { background-position: 200% center; }
+}
+@keyframes ambient {
+  from { opacity: 0.6; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(-12px); }
+}
+
+/* ---------------- Dashboard wall rotation ---------------- */
+.wall-layer {
+  position: absolute;
+  inset: 0;
+}
+.wall-in {
+  animation: wallIn 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.wall-out {
+  animation: wallOut 800ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  pointer-events: none;
+}
+.brand-swap {
+  animation: brandSwap 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes wallIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes wallOut {
+  from { opacity: 1; transform: scale(1); filter: blur(0); }
+  to { opacity: 0; transform: scale(0.985) translateY(-10px); filter: blur(2px); }
+}
+@keyframes brandSwap {
+  from { opacity: 0; transform: translateX(-14px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes progressFill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ---------------- Carousel (react-slick) fit ---------------- */
+.slick-slider,
+.slick-list,
+.slick-track {
+  height: 100%;
+}
+.slick-slide > div {
+  height: 100%;
+}
+
+/* hide scrollbars on TV */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter, .count-pop, .gradient-text, .app-bg::before, .live-dot {
+    animation: none;
+  }
+}

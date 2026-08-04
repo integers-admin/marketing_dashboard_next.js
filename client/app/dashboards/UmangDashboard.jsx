@@ -1,7 +1,7 @@
 "use client";
 import BarChartDouble from "../BarchartDouble/page";
 import BarChartSingle from "../BarchartSingle/page";
-import CarouselComponent from "../Crousel/page";
+
 import Emailer from "../Emailer/page";
 import KPI from "../KPI/page";
 import TodaysCreative from "../TodaysCreative/page";
@@ -11,6 +11,7 @@ import PaidAds from "../PaidAds/page";
 import { SectionTitle } from "../lib/ui";
 import { useContext } from "react";
 import DataContext from "@/context/DataContext";
+import CarouselComponent from "../Crousel/page";
 
 const UmangDashboard = () => {
 

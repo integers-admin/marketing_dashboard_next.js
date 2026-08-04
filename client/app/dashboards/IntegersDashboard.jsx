@@ -341,9 +341,12 @@ const IntegersDashboard = () => {
         <Card title="Engagement" accent={TITLE} right={"Integer Market"}>
           <div className="flex-1 grid grid-cols-2 auto-rows-fr gap-[clamp(0.35rem,0.55vw,0.9rem)] min-h-0">
             <WinRow label="Bounce Rate" val={`${integersIntegrsMarketGa4Data?.currentMonth?.bounceRate ?? "--"} %`} accent="#22d3ee" />
-            <WinRow label="Avg. Eng. Time" val={formatEngagementTime(
+            {/* <WinRow label="Avg. Eng. Time" val={formatEngagementTime(
               integersIntegrsMarketGa4Data?.currentMonth?.averageEngagementTime
-            )} accent="#22d3ee" />
+            )} accent="#22d3ee" /> */}
+
+            <WinRow label="Avg. Eng. Time" val={integersIntegrsMarketGa4Data?.currentMonth?.averageEngagementTime ?? "--"} accent="#22d3ee" />
+
             <WinRow label="Clicks" val={integersIntegrsMarketGa4Data?.currentMonth?.clicks ?? "--"} accent="#a78bfa" />
             <WinRow label="New User" val={integersIntegrsMarketGa4Data?.currentMonth?.newUsers ?? "--"} accent="#fbbf24" big />
           </div>

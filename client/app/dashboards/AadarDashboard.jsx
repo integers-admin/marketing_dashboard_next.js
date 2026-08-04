@@ -216,6 +216,20 @@ const AadarDashboard = () => {
     return `${minutes}m ${remainingSeconds}s`;
   };
 
+  const formatNumber = (value) => {
+    if (value == null || value === "") return "--";
+
+    const num = Number(value);
+
+    if (Number.isNaN(num)) return "--";
+
+    if (num >= 1000) {
+      return `${(num / 1000).toFixed(1).replace(".0", "")}k`;
+    }
+
+    return num.toString();
+  };
+
   const contextData = useContext(DataContext);
 
   let aadarNewsData = contextData?.trendData?.aadar?.news;
@@ -295,9 +309,32 @@ const AadarDashboard = () => {
       <div className="col-start-4 col-span-4 row-start-2 min-h-0 enter d4">
         <Card title="Digital Performance" accent={TITLE}>
           <div className="flex-1 grid grid-cols-3 auto-rows-fr gap-[clamp(0.35rem,0.55vw,0.9rem)] min-h-0">
-            <Metric label="Instagram" value={digitalPerformance?.data?.instagram_aadar ?? "--"} sub="" accent="#fb7185" icon={I.insta} brandValue />
-            <Metric label="YouTube" value={digitalPerformance?.data?.youtube_aadar ?? "--"} sub="" accent="#ff5c5c" icon={I.play} brandValue />
-            <Metric label="Website" value={aadar_Ga4Data?.activeUsers ?? "--"} sub="" accent="#22d3ee" icon={I.globe} brandValue />
+            <Metric
+              label="Instagram"
+              value={formatNumber(digitalPerformance?.data?.instagram_aadar)}
+              sub=""
+              accent="#fb7185"
+              icon={I.insta}
+              brandValue
+            />
+
+            <Metric
+              label="YouTube"
+              value={formatNumber(digitalPerformance?.data?.youtube_aadar)}
+              sub=""
+              accent="#ff5c5c"
+              icon={I.play}
+              brandValue
+            />
+
+            <Metric
+              label="Website"
+              value={formatNumber(aadar_Ga4Data?.activeUsers)}
+              sub=""
+              accent="#22d3ee"
+              icon={I.globe}
+              brandValue
+            />
           </div>
         </Card>
       </div>
@@ -346,48 +383,48 @@ const AadarDashboard = () => {
             <WinRow label="ctr" val={aadarPaidAds?.ctr ?? "--"} accent="#fbbf24" big /> */}
 
             <WinRow
-  label="Spend"
-  val={
-    aadarPaidAds?.spend != null
-      ? `₹ ${aadarPaidAds.spend.toLocaleString("en-IN", {
-          minimumFractionDigits: 1,
-          maximumFractionDigits: 1,
-        })}`
-      : "--"
-  }
-  accent="#22d3ee"
-/>
+              label="Spend"
+              val={
+                aadarPaidAds?.spend != null
+                  ? `₹ ${aadarPaidAds.spend.toLocaleString("en-IN", {
+                    minimumFractionDigits: 1,
+                    maximumFractionDigits: 1,
+                  })}`
+                  : "--"
+              }
+              accent="#22d3ee"
+            />
 
-<WinRow
-  label="Impressions"
-  val={
-    aadarPaidAds?.impressions != null
-      ? aadarPaidAds.impressions.toLocaleString("en-IN")
-      : "--"
-  }
-  accent="#22d3ee"
-/>
+            <WinRow
+              label="Impressions"
+              val={
+                aadarPaidAds?.impressions != null
+                  ? aadarPaidAds.impressions.toLocaleString("en-IN")
+                  : "--"
+              }
+              accent="#22d3ee"
+            />
 
-<WinRow
-  label="Engagements"
-  val={
-    aadarPaidAds?.engagements != null
-      ? aadarPaidAds.engagements.toLocaleString("en-IN")
-      : "--"
-  }
-  accent="#a78bfa"
-/>
+            <WinRow
+              label="Engagements"
+              val={
+                aadarPaidAds?.engagements != null
+                  ? aadarPaidAds.engagements.toLocaleString("en-IN")
+                  : "--"
+              }
+              accent="#a78bfa"
+            />
 
-<WinRow
-  label="CTR"
-  val={
-    aadarPaidAds?.ctr != null
-      ? `${aadarPaidAds.ctr.toFixed(1)}%`
-      : "--"
-  }
-  accent="#fbbf24"
-  big
-/>
+            <WinRow
+              label="CTR"
+              val={
+                aadarPaidAds?.ctr != null
+                  ? `${aadarPaidAds.ctr.toFixed(1)}%`
+                  : "--"
+              }
+              accent="#fbbf24"
+              big
+            />
 
           </div>
         </Card>

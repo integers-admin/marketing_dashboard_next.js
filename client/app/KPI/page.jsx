@@ -669,7 +669,7 @@ const KPI = ({ umangLeadsData,revenueGenerated }) => {
       <div className="flex-1 flex flex-col gap-[clamp(0.35rem,0.6vw,1rem)] min-h-0">
         {/* <WinRow label="Best Company" val={umangLeadsData?.best_company ?? "--"} accent="#22d3ee" /> */}
         <WinRow label="Best Product" val={umangLeadsData?.best_product ?? "--"} accent="#a78bfa" />
-        <WinRow label="Revenue Generated" val={revenueGenerated ?? "--"} accent="#fbbf24" big />
+        <WinRow label="Revenue Generated" val={`₹ ${revenueGenerated ?? "--"}`} accent="#fbbf24" big />
       </div>
 
       {/* ===== Leads by industry ===== */}

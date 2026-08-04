@@ -194,6 +194,20 @@ const IntegersDashboard = () => {
     return `${minutes}m ${remainingSeconds}s`;
   };
 
+  const formatNumber = (value) => {
+    if (value == null || value === "") return "--";
+
+    const num = Number(value);
+
+    if (Number.isNaN(num)) return "--";
+
+    if (num >= 1000) {
+      return `${(num / 1000).toFixed(1).replace(".0", "")}k`;
+    }
+
+    return num.toString();
+  };
+
   const contextData = useContext(DataContext);
 
   console.log("context????: ", contextData);
@@ -262,10 +276,42 @@ const IntegersDashboard = () => {
       <div className="col-start-9 col-span-5 row-start-1 min-h-0 enter d3">
         <Card title="Social Performance" accent={TITLE} right={<span className="t-small text-muted-2">followers</span>}>
           <div className="flex-1 grid grid-cols-2 auto-rows-fr gap-[clamp(0.35rem,0.55vw,0.9rem)] min-h-0">
-            <Metric label="Instagram" value={integers_social_performance?.instagram_integers ?? "--"} accent="#fb7185" icon={I.insta} brandValue />
+            {/* <Metric label="Instagram" value={integers_social_performance?.instagram_integers ?? "--"} accent="#fb7185" icon={I.insta} brandValue />
             <Metric label="YouTube" value={integers_social_performance?.youtube_integers ?? "--"} accent="#ff5c5c" icon={I.play} brandValue />
             <Metric label="Twitter" value={integers_social_performance?.twitter_integers ?? "--"} accent="#38bdf8" icon={I.send} brandValue />
-            <Metric label="LinkedIn" value={integers_social_performance?.linkedin_integers ?? "--"} accent="#4b7bf5" icon={I.users} brandValue />
+            <Metric label="LinkedIn" value={integers_social_performance?.linkedin_integers ?? "--"} accent="#4b7bf5" icon={I.users} brandValue /> */}
+
+            <Metric
+              label="Instagram"
+              value={formatNumber(integers_social_performance?.instagram_integers)}
+              accent="#fb7185"
+              icon={I.insta}
+              brandValue
+            />
+
+            <Metric
+              label="YouTube"
+              value={formatNumber(integers_social_performance?.youtube_integers)}
+              accent="#ff5c5c"
+              icon={I.play}
+              brandValue
+            />
+
+            <Metric
+              label="Twitter"
+              value={formatNumber(integers_social_performance?.twitter_integers)}
+              accent="#38bdf8"
+              icon={I.send}
+              brandValue
+            />
+
+            <Metric
+              label="LinkedIn"
+              value={formatNumber(integers_social_performance?.linkedin_integers)}
+              accent="#4b7bf5"
+              icon={I.users}
+              brandValue
+            />
           </div>
         </Card>
       </div>
@@ -345,7 +391,8 @@ const IntegersDashboard = () => {
               integersIntegrsMarketGa4Data?.currentMonth?.averageEngagementTime
             )} accent="#22d3ee" /> */}
 
-            <WinRow label="Avg. Eng. Time" val={integersIntegrsMarketGa4Data?.currentMonth?.averageEngagementTime ?? "--"} accent="#22d3ee" />
+            <WinRow label="Avg. Eng. Time" val={`${integersIntegrsMarketGa4Data?.currentMonth?.averageEngagementTime ?? "--"} sec`} accent="#22d3ee" />
+          
 
             <WinRow label="Clicks" val={integersIntegrsMarketGa4Data?.currentMonth?.clicks ?? "--"} accent="#a78bfa" />
             <WinRow label="New User" val={integersIntegrsMarketGa4Data?.currentMonth?.newUsers ?? "--"} accent="#fbbf24" big />

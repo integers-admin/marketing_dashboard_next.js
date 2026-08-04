@@ -1,9 +1,11 @@
+"use client";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useApi } from "./api";
-import { Card, Gauge, IconChip, I } from "./ui";
+import { Card, SectionTitle, Gauge, IconChip, I } from "./ui";
 
+/* ---------------- Today's Creative (4:5) ---------------- */
 export const CreativesBlock = ({ apiBase = "", accent = "from-[#00CEC9] to-sky-400", footer = "4:5 · Social" }) => {
   const { data } = useApi(`${apiBase}/analyze/daily-creatives`);
   const images = data?.images ?? [];
@@ -35,6 +37,7 @@ export const CreativesBlock = ({ apiBase = "", accent = "from-[#00CEC9] to-sky-4
   );
 };
 
+/* ---------------- Today's Trending (news + hashtags) ---------------- */
 export const TrendingBlock = ({ apiBase = "", accent = "from-cyan-400 to-sky-500", hashtags = [] }) => {
   const { data } = useApi(`${apiBase}/analyze/trends/global-news/latest`, {
     transform: (d) => (typeof d === "string" ? d.split("\n").map((s) => s.trim()).filter(Boolean) : Array.isArray(d) ? d : []),
@@ -75,6 +78,7 @@ export const TrendingBlock = ({ apiBase = "", accent = "from-cyan-400 to-sky-500
   );
 };
 
+/* ---------------- Emailer (open-rate gauge + 3 stats) ---------------- */
 export const EmailerBlock = ({ apiBase = "", accent = "from-amber-400 to-rose-400", from = "#fbbf24", to = "#fb7185" }) => {
   const { data } = useApi(`${apiBase}/analyze/emailer/performance/current-month`);
   const rate = Number(data?.avg_open_rate_pct);

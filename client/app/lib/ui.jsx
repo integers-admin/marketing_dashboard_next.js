@@ -1,3 +1,7 @@
+"use client";
+import { pct } from "./api";
+
+/* ---------------- Card + section title ---------------- */
 export const Card = ({ title, accent = "from-[#00CEC9] to-sky-400", right, children, className = "", style }) => (
   <div className={`dark rounded-2xl p-[clamp(0.6rem,0.9vw,1.6rem)] flex flex-col h-full min-h-0 overflow-hidden ${className}`} style={style}>
     {title && (
@@ -17,6 +21,19 @@ export const SectionTitle = ({ children, accent = "from-[#00CEC9] to-sky-400" })
   </h2>
 );
 
+/* ---------------- Trend badge (current vs last) ---------------- */
+// export const TrendBadge = ({ cur, prev }) => {
+//   const d = pct(cur, prev);
+//   if (d == null) return null;
+//   const up = d >= 0;
+//   return (
+//     <span className={`t-small font-bold px-[0.55em] py-[0.12em] rounded-full whitespace-nowrap ${up ? "text-emerald-300 bg-emerald-400/15" : "text-rose-300 bg-rose-400/15"}`}>
+//       {up ? "▲" : "▼"} {Math.abs(d).toFixed(1)}%
+//     </span>
+//   );
+// };
+
+/* ---------------- Single metric tile ---------------- */
 export const Metric = ({ label, value, sub, accent = "#00CEC9", icon, big, brandValue }) => (
   <div className="dark-card rounded-xl flex flex-col justify-center px-[clamp(0.5rem,0.8vw,1.4rem)] py-[clamp(0.35rem,0.55vw,0.9rem)] min-h-0 overflow-hidden" style={{ boxShadow: `inset 3px 0 0 ${accent}` }}>
     <div className="flex items-center gap-[clamp(0.3rem,0.5vw,0.8rem)] mb-[0.15em]">
@@ -24,14 +41,18 @@ export const Metric = ({ label, value, sub, accent = "#00CEC9", icon, big, brand
       <span className="t-small text-muted-2 font-medium uppercase tracking-wide truncate">{label}</span>
     </div>
     <span className={`text-lg font-extrabold leading-none break-words count-pop ml-6`} style={brandValue ? { color: accent } : { color: "var(--text-strong)" }}>
+      {/* {value} */}
+
       {String(value).length > 14
         ? String(value).slice(0, 11) + "..."
         : String(value)}
+
     </span>
     {sub && <span className="t-small text-muted-2 mt-[0.25em] truncate">{sub}</span>}
   </div>
 );
 
+/* metric with month-over-month comparison */
 export const TrendMetric = ({ label, value, prev, accent = "#00CEC9", icon, prefix = "", suffix = "" }) => (
   <div className="dark-card rounded-xl flex flex-col justify-center px-[clamp(0.5rem,0.8vw,1.4rem)] py-[clamp(0.35rem,0.55vw,0.9rem)] min-h-0 overflow-hidden" style={{ boxShadow: `inset 3px 0 0 ${accent}` }}>
     <div className="flex items-center gap-[clamp(0.3rem,0.5vw,0.8rem)] mb-[0.15em]">
@@ -40,10 +61,15 @@ export const TrendMetric = ({ label, value, prev, accent = "#00CEC9", icon, pref
     </div>
     <div className="flex items-end gap-[clamp(0.35rem,0.6vw,1rem)] flex-wrap">
       <span className="t-value font-extrabold leading-none text-strong ml-5.5">{value}</span>
+      {/* <TrendBadge cur={value} prev={prev} /> */}
     </div>
+    {/* <span className="t-small text-muted-2 mt-[0.25em] truncate">
+      last month <span className="font-bold text-strong">{prev == null ? "--" : `${prefix}${prev}${suffix}`}</span>
+    </span> */}
   </div>
 );
 
+/* ---------------- Icon chip (inline svg path) ---------------- */
 export const IconChip = ({ d, accent = "#00CEC9", size = "1.6rem" }) => (
   <span className="grid place-items-center rounded-lg shrink-0" style={{ background: `${accent}22`, color: accent, height: `clamp(1.1rem,1.5vw,${size})`, width: `clamp(1.1rem,1.5vw,${size})` }}>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[58%] w-[58%]">
@@ -52,6 +78,7 @@ export const IconChip = ({ d, accent = "#00CEC9", size = "1.6rem" }) => (
   </span>
 );
 
+/* ---------------- Horizontal comparison bar ---------------- */
 export const BarStat = ({ label, cur, prev, max, accent = "#00CEC9", format = (v) => v }) => {
   const c = Number(cur) || 0;
   const p = Number(prev) || 0;
@@ -64,10 +91,15 @@ export const BarStat = ({ label, cur, prev, max, accent = "#00CEC9", format = (v
           {cur == null ? "--" : format(cur)}
         </span>
       </div>
+      {/* <div className="relative h-[clamp(0.45rem,0.7vw,1.1rem)] rounded-full bg-white/8 overflow-hidden">
+        <div className="absolute inset-y-0 left-0 rounded-full opacity-30" style={{ width: `${(p / m) * 100}%`, background: accent }} />
+        <div className="absolute inset-y-0 left-0 rounded-full" style={{ width: `${(c / m) * 100}%`, background: `linear-gradient(90deg, ${accent}, ${accent}cc)`, boxShadow: `0 0 12px ${accent}66` }} />
+      </div> */}
     </div>
   );
 };
 
+/* ---------------- Named list (expiry / re-order / fast movers) ---------------- */
 export const NamedList = ({ items, accent = "#00CEC9", valueKey = "qty", emptyHint = "--" }) => (
   <div className="flex-1 flex flex-col gap-[clamp(0.2rem,0.4vw,0.6rem)] min-h-0 overflow-hidden">
     {(items && items.length ? items : [null, null, null]).slice(0, 4).map((it, i) => (
@@ -84,6 +116,7 @@ export const NamedList = ({ items, accent = "#00CEC9", valueKey = "qty", emptyHi
   </div>
 );
 
+/* ---------------- Radial gauge ---------------- */
 export const Gauge = ({ value, display, from = "#00CEC9", to = "#38bdf8", id = "g" }) => {
   const v = Math.max(0, Math.min(100, Number(value) || 0));
   const r = 42;
@@ -108,6 +141,7 @@ export const Gauge = ({ value, display, from = "#00CEC9", to = "#38bdf8", id = "
   );
 };
 
+/* ---------------- Shared icon paths ---------------- */
 export const I = {
   rupee: "M6 3h12M6 8h12M6 13h6a4 4 0 000-8M6 13l7 8",
   dollar: "M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6",

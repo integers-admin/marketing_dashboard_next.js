@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
+/* Server-synced IST clock (drift-corrected, re-syncs every 5 min). */
 const Clock = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");

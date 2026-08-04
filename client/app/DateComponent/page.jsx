@@ -51,7 +51,6 @@ const DateTime = () => {
         setLoading(false);
         setError("");
       } catch (err) {
-       // console.error(err);
         setError("Could not fetch server time");
         setLoading(false);
       }

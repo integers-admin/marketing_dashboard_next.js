@@ -25,11 +25,8 @@ const UmangDashboard = () => {
   let umangPaidAdsData = contextData?.umangAdsData?.data;
   let umang_GA4Data = contextData?.umangGA4Data?.data;
 
-  // console.log("contextData??: ",contextData);
 
   let umang_market_data = contextData?.marketingDashboardData?.data;
-
-  // console.log("umang_market_data: ",umang_market_data);
 
   let umangEngineeringData = umang_GA4Data?.find((itm)=>{
     return itm.name==="Umang Engineering"

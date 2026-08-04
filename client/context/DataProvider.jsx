@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import DataContext from "./DataContext";
-//
-
 
 const DataProvider = ({ children }) => {
     const baseurl1 = "https://marketing-dashboard-node-backend.onrender.com";
@@ -25,7 +23,6 @@ const DataProvider = ({ children }) => {
 
     const getDashboardData = async () => {
         try {
-            console.log("api called");
             let [overviewRes,
                 quotesRes,
                 aadarRes,

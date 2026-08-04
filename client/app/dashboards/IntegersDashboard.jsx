@@ -210,8 +210,6 @@ const IntegersDashboard = () => {
 
   const contextData = useContext(DataContext);
 
-  console.log("context????: ", contextData);
-
   let integersOverviewData = contextData?.overviewData?.integers_overview;
   let integersNewsData = contextData?.trendData?.integers?.news;
   let integersPaidAds = contextData?.integersAdsData?.data;
@@ -231,8 +229,6 @@ const IntegersDashboard = () => {
   );
 
   let integers_social_performance = contextData?.marketingDashboardData?.data;
-
-  console.log("integersReportInShortGa4Data: ", integersReportInShortGa4Data);
 
   const gap = "gap-[clamp(0.4rem,0.7vw,1.3rem)]";
   return (

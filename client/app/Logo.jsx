@@ -12,6 +12,7 @@ export const IntegersMark = ({ className = "" }) => (
   </svg>
 );
 
+
 export default IntegersMark;
 
 export const MonogramMark = ({ letter = "?", from = "#00CEC9", to = "#38bdf8", className = "" }) => (
@@ -22,3 +23,5 @@ export const MonogramMark = ({ letter = "?", from = "#00CEC9", to = "#38bdf8", c
     {letter}
   </span>
 );
+
+// 

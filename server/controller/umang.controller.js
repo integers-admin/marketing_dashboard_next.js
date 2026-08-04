@@ -2,6 +2,7 @@
 import axios from "axios";
 import { pool } from "../config/db.js";
 
+
 export const getUmangGA4Data = async (req, res) => {
   try {
     const result = await pool.query(`

@@ -1,5 +1,6 @@
 import { pool } from "../config/db.js";
 
+
 export const marketingDashboard = async (req, res) => {
   try {
     const {

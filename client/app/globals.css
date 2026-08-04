@@ -30,7 +30,7 @@
   --fs-value-xl: clamp(1.6rem, 2.2vw, 4.2rem);
   --fs-display: clamp(1.2rem, 1.5vw, 2.8rem);
 }
-
+/*  */
 html,
 body {
   height: 100%;

@@ -17,6 +17,7 @@ app.use(
     origin: [
       "https://marketing-dashboard-next-js.vercel.app",
       "https://marketing-dashboard-kappa-sandy.vercel.app",
+      "https://marketing-dashboard-next-js-wnxa.vercel.app",
       "http://localhost:5173",
       "http://localhost:3000",
     ],

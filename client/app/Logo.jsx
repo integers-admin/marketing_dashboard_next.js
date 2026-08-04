@@ -1,4 +1,3 @@
-/* Integers brand mark (hexagon) — from Int_Logo_Main_Fav.svg */
 export const IntegersMark = ({ className = "" }) => (
   <svg viewBox="0 0 130 143" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} aria-label="Integers">
     <path
@@ -15,8 +14,6 @@ export const IntegersMark = ({ className = "" }) => (
 
 export default IntegersMark;
 
-/* Placeholder monogram mark — used for brands whose logo SVG
-   isn't wired in yet (Umang, Aadar). Swap for the real SVG later. */
 export const MonogramMark = ({ letter = "?", from = "#00CEC9", to = "#38bdf8", className = "" }) => (
   <span
     className={`grid place-items-center rounded-2xl font-black text-[#06121f] leading-none aspect-square ${className}`}

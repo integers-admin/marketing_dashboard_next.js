@@ -1,18 +1,8 @@
 @import "tailwindcss";
-
-/* ============================================================
-   MARKETING COMMAND CENTER — design tokens
-   Tuned for a 72" 4K TV, fluid down to a laptop.
-   Typography scales with viewport width (vw) so text grows
-   automatically on bigger screens while staying readable.
-   ============================================================ */
 :root {
-  /* Surface palette (deep navy / slate — industry-standard dashboard base) */
   --bg-0: #070b16;
   --bg-1: #0b1222;
   --bg-2: #131d33;
-
-  /* Brand + accents (Integers turquoise) */
   --brand: #00CEC9;
   --brand-2: #38bdf8;
   --emerald: #34d399;
@@ -23,20 +13,14 @@
   --rose: #fb7185;
   --amber: #fbbf24;
   --violet: #a78bfa;
-
-  /* Text — high contrast for distance reading on a TV */
   --text-strong: #ffffff;
   --text: #e6edf6;
   --text-muted: #9fb1c7;
-
-  /* Glass cards */
   --card-bg: rgba(22, 32, 53, 0.66);
   --card-bg-deep: rgba(13, 20, 36, 0.72);
   --card-border: rgba(148, 170, 200, 0.18);
   --card-border-strong: rgba(0, 206, 201, 0.40);
   --card-shadow: 0 14px 46px -16px rgba(0, 0, 0, 0.7);
-
-  /* Fluid type scale: clamp(min, viewport, max) */
   --fs-micro: clamp(0.55rem, 0.55vw, 1.05rem);
   --fs-small: clamp(0.7rem, 0.72vw, 1.35rem);
   --fs-label: clamp(0.78rem, 0.85vw, 1.6rem);
@@ -47,7 +31,6 @@
   --fs-display: clamp(1.2rem, 1.5vw, 2.8rem);
 }
 
-/* ---------------- Base ---------------- */
 html,
 body {
   height: 100%;
@@ -59,7 +42,6 @@ body {
   overflow: hidden;
 }
 
-/* Animated ambient background — drifting color orbs behind the grid */
 .app-bg {
   position: relative;
   background:
@@ -81,9 +63,6 @@ body {
   animation: ambient 14s ease-in-out infinite alternate;
 }
 
-/* ---------------- Glass card system ---------------- */
-/* .dark and .dark-card are reused across components — upgrading them
-   restyles the whole dashboard consistently. */
 .dark {
   background: var(--card-bg);
   color: var(--text);
@@ -94,7 +73,6 @@ body {
   position: relative;
 }
 
-/* hairline top highlight on every glass card */
 .dark::after {
   content: "";
   position: absolute;
@@ -117,7 +95,6 @@ body {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* ---------------- Typography helpers ---------------- */
 .t-display { font-size: var(--fs-display); }
 .t-h2 { font-size: var(--fs-h2); }
 .t-body { font-size: var(--fs-body); }
@@ -130,7 +107,6 @@ body {
 .text-muted-2 { color: var(--text-muted); }
 .text-strong { color: var(--text-strong); }
 
-/* Gradient text accents */
 .gradient-text {
   background-image: linear-gradient(
     100deg,
@@ -145,7 +121,6 @@ body {
   animation: shimmer-text 8s linear infinite;
 }
 
-/* primary brand value highlight — follows the active brand accent */
 .gradient-emerald {
   background-image: linear-gradient(100deg, var(--accent, #00CEC9), var(--accent2, #38bdf8));
   background-clip: text;
@@ -153,7 +128,6 @@ body {
   color: transparent;
 }
 
-/* ---------------- Live indicator ---------------- */
 .live-dot {
   width: 0.55em;
   height: 0.55em;
@@ -163,7 +137,6 @@ body {
   animation: pulse-dot 1.8s ease-out infinite;
 }
 
-/* colored stat chips for KPI industries */
 .stat-chip {
   position: relative;
   overflow: hidden;
@@ -176,13 +149,11 @@ body {
   opacity: 0.12;
 }
 
-/* card entrance + accent bar on the left of section cards */
 .accent-l {
   border-left: 3px solid transparent;
   border-image: linear-gradient(180deg, var(--emerald), var(--cyan)) 1;
 }
 
-/* ---------------- Entrance animations ---------------- */
 .enter {
   animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -194,12 +165,10 @@ body {
 .d6 { animation-delay: 0.40s; }
 .d7 { animation-delay: 0.47s; }
 
-/* number reveal for KPI values */
 .count-pop {
   animation: pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ---------------- Keyframes ---------------- */
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px) scale(0.985); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -221,7 +190,6 @@ body {
   to { opacity: 1; transform: translateY(-12px); }
 }
 
-/* ---------------- Dashboard wall rotation ---------------- */
 .wall-layer {
   position: absolute;
   inset: 0;
@@ -253,7 +221,6 @@ body {
   to { width: 100%; }
 }
 
-/* ---------------- Carousel (react-slick) fit ---------------- */
 .slick-slider,
 .slick-list,
 .slick-track {
@@ -263,7 +230,6 @@ body {
   height: 100%;
 }
 
-/* hide scrollbars on TV */
 * {
   scrollbar-width: none;
 }

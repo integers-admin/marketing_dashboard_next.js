@@ -18,20 +18,6 @@ export const marketingDashboard = async (req, res) => {
       youtubeAadar,
     } = req.body;
 
-    // console.log(revenueGenerated,
-    //   linkedinUmang,
-    //   facebookUmang,
-    //   youtubeUmang,
-    //   pinterestUmang,
-    //   instagramUmang,
-    //   othersUmang,
-    //   instagramIntegers,
-    //   youtubeIntegers,
-    //   twitterIntegers,
-    //   linkedinIntegers,
-    //   instagramAadar,
-    //   youtubeAadar);
-
     const query = `
             INSERT INTO dashboard.marketing_dashboard
             (

@@ -1,11 +1,4 @@
-/*
-  Brand registry for the rotating wall. Each brand carries its own
-  accent palette, logo, tagline and endpoint namespace.
-
-  Logos: Integers uses the real SVG mark. Umang & Aadar use monogram
-  placeholders until their logo SVGs are dropped in (set `markSvg`).
-*/
-export const ROTATE_MS = 20000; // 20s per dashboard (20000)
+export const ROTATE_MS = 20000;
 export const TRANSITION_MS = 800;
 
 export const BRANDS = [
@@ -19,7 +12,7 @@ export const BRANDS = [
     markFrom: "#58c09f",
     markTo: "#5bc7d3",
     letter: "U",
-    apiBase: "",          // existing routes live at root of backend_url
+    apiBase: "",
   },
   {
     id: "aadar",

@@ -53,7 +53,6 @@ export const getUmangGoogleAdsData = async (req, res) => {
         error: "No data found in database",
       });
     }
-
     // console.log("result: ", result?.rows[0]?.data?.data?.summary?.currentMonth);
 
     res.json({
@@ -85,7 +84,6 @@ export const getUmangEmailerData = async (req, res) => {
         error: "No data found in database",
       });
     }
-
     // console.log("emailer: ",result.rows[0].data);
 
     res.json({

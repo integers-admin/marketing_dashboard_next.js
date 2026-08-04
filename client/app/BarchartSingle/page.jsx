@@ -49,9 +49,6 @@ const BarChartSingle = ({ umang_market_data }) => {
     <div className="dark p-[clamp(0.6rem,0.9vw,1.6rem)] rounded-2xl w-full h-full min-w-0 flex flex-col overflow-hidden">
       <h2 className="font-semibold mb-2">
         <span className="t-label text-muted-2 uppercase tracking-wide">Social Impressions</span>
-        {/* <span className="t-value gradient-emerald font-extrabold leading-none">
-          {impression != null ? formatNumber(impression) : "--"}
-        </span> */}
       </h2>
       <div className="flex-1 min-h-0">
         <ResponsiveContainer width="100%" height="100%">
@@ -104,7 +101,6 @@ const BarChartSingle = ({ umang_market_data }) => {
 
 export default BarChartSingle;
 
-/* Custom Legend */
 const CustomLegend = () => (
   <div className="flex items-center t-small justify-center gap-2 pt-1">
     <span className="w-[0.9em] h-[0.9em] rounded-sm inline-block" style={{ background: "#5bc7d3" }} />

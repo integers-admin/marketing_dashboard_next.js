@@ -7,7 +7,7 @@ import { fetchAadarGA4Data, fetchAadarGoogleAdsData } from "../services/aadar.se
 
 const automation = () => {
   console.log("automation started...");
-  cron.schedule("*/2 * * * *", async () => {
+  cron.schedule("0 0 * * *", async () => {
     console.log("cron started");
     console.log(` Time: ${new Date().toISOString()}`);
 

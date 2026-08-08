@@ -66,7 +66,7 @@ const App = () => {
     try {
       setLoading(true);
       const response = await fetch(
-        "https://marketing-dashboard-node-backend.onrender.com/api/marketing-dashboard",
+        "https://marketingdashboardnextjs-production.up.railway.app/api/marketing-dashboard",
         {
           method: "POST",
           headers: {

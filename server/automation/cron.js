@@ -1,4 +1,4 @@
-// //
+
 // import cron from "node-cron";
 // import { fetchUmangGA4Data, fetchUmangGlobalEmailerData, fetchUmangGoogleAdsData } from "../services/umang.service.js";
 // import { pool } from "../config/db.js";
@@ -83,7 +83,6 @@
 // };
 
 // export default automation;
-
 
 
 

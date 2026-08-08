@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import DataContext from "./DataContext";
 
 const DataProvider = ({ children }) => {
-    const baseurl1 = "https://marketing-dashboard-node-backend.onrender.com";
+    const baseurl1 = "https://marketingdashboardnextjs-production.up.railway.app";
     const baseurl2 = "https://admin-panel.integermarket.com";
     const [overviewData, setOverviewData] = useState(null);
     const [quotesData, setQuotesData] = useState(null);

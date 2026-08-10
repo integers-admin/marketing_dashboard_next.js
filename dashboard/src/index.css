@@ -88,3 +88,19 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.date-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.date-text p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 24px;
+}
+
+sup {
+  color: red;
+}

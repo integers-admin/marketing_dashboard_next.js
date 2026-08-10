@@ -3,6 +3,26 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
+
+  const today = new Date();
+
+  const startDate = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    1
+  );
+
+  const formatDate = (date) => {
+    return date.toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
+  const dateRange = `${formatDate(startDate)} - ${formatDate(today)}`;
+
+
   const [inputValue, setInputValue] = useState({
     revenueGenerated: "",
     linkedinUmang: "",
@@ -114,12 +134,12 @@ const App = () => {
     <div className="main">
       <ToastContainer />
       <form onSubmit={handleSubmit}>
-        <h2>Umang Global Group</h2>
+        <div className="date-text"><h2>Umang Global Group</h2><p>{dateRange}</p></div>
 
         <div className="container">
           <div>
             <label htmlFor="revenueGenerated">
-              Revenue Generated (Total Leads)
+              Revenue Generated (Total Leads) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -135,7 +155,7 @@ const App = () => {
 
           <div>
             <label htmlFor="linkedinUmang">
-              Linkedin (Social Impression)
+              Linkedin (Social Impression) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -151,7 +171,7 @@ const App = () => {
 
           <div>
             <label htmlFor="facebookUmang">
-              Facebook (Social Impression)
+              Facebook (Social Impression) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -167,7 +187,7 @@ const App = () => {
 
           <div>
             <label htmlFor="youtubeUmang">
-              Youtube (Social Impression)
+              Youtube (Social Impression) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -183,7 +203,7 @@ const App = () => {
 
           <div>
             <label htmlFor="pinterestUmang">
-              Pinterest (Social Impression)
+              Pinterest (Social Impression) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -199,7 +219,7 @@ const App = () => {
 
           <div>
             <label htmlFor="instagramUmang">
-              Instagram (Social Impression)
+              Instagram (Social Impression) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -215,7 +235,7 @@ const App = () => {
 
           <div>
             <label htmlFor="othersUmang">
-              Others (Social Impression)
+              Others (Social Impression) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -235,7 +255,7 @@ const App = () => {
         <div className="container">
           <div>
             <label htmlFor="instagramIntegers">
-              Instagram (Social Performance)
+              Instagram (Social Performance) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -251,7 +271,7 @@ const App = () => {
 
           <div>
             <label htmlFor="youtubeIntegers">
-              Youtube (Social Performance)
+              Youtube (Social Performance) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -267,7 +287,7 @@ const App = () => {
 
           <div>
             <label htmlFor="twitterIntegers">
-              Twitter (Social Performance)
+              Twitter (Social Performance) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -283,7 +303,7 @@ const App = () => {
 
           <div>
             <label htmlFor="linkedinIntegers">
-              Linkedin (Social Performance)
+              Linkedin (Social Performance) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -303,7 +323,7 @@ const App = () => {
         <div className="container">
           <div>
             <label htmlFor="instagramAadar">
-              Instagram (Digital Performance)
+              Instagram (Digital Performance) <sup>*</sup>
             </label>
             <input
               type="number"
@@ -319,7 +339,7 @@ const App = () => {
 
           <div>
             <label htmlFor="youtubeAadar">
-              Youtube (Digital Performance)
+              Youtube (Digital Performance) <sup>*</sup>
             </label>
             <input
               type="number"

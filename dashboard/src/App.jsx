@@ -30,13 +30,13 @@ const App = () => {
     youtubeUmang: "",
     pinterestUmang: "",
     instagramUmang: "",
-    othersUmang: "",
+    twitterUmang: "",
     instagramIntegers: "",
     youtubeIntegers: "",
-    twitterIntegers: "",
+    facebookIntegers: "",
     linkedinIntegers: "",
     instagramAadar: "",
-    youtubeAadar: "",
+    linkedinAadar: "",
   });
 
   const [error, setError] = useState({});
@@ -112,13 +112,13 @@ const App = () => {
         youtubeUmang: "",
         pinterestUmang: "",
         instagramUmang: "",
-        othersUmang: "",
+        twitterUmang: "",
         instagramIntegers: "",
         youtubeIntegers: "",
-        twitterIntegers: "",
+        facebookIntegers: "",
         linkedinIntegers: "",
         instagramAadar: "",
-        youtubeAadar: "",
+        linkedinAadar: "",
       });
 
       setError({});
@@ -234,18 +234,18 @@ const App = () => {
           </div>
 
           <div>
-            <label htmlFor="othersUmang">
-              Others (Social Impression) <sup>*</sup>
+            <label htmlFor="twitterUmang">
+              Twitter (Social Impression) <sup>*</sup>
             </label>
             <input
               type="number"
-              id="othersUmang"
-              name="othersUmang"
-              value={inputValue.othersUmang}
+              id="twitterUmang"
+              name="twitterUmang"
+              value={inputValue.twitterUmang}
               onChange={handleChange}
             />
-            {error.othersUmang && (
-              <p className="error">{error.othersUmang}</p>
+            {error.twitterUmang && (
+              <p className="error">{error.twitterUmang}</p>
             )}
           </div>
         </div>
@@ -286,18 +286,18 @@ const App = () => {
           </div>
 
           <div>
-            <label htmlFor="twitterIntegers">
-              Twitter (Social Performance) <sup>*</sup>
+            <label htmlFor="facebookIntegers">
+              Facebook (Social Performance) <sup>*</sup>
             </label>
             <input
               type="number"
-              id="twitterIntegers"
-              name="twitterIntegers"
-              value={inputValue.twitterIntegers}
+              id="facebookIntegers"
+              name="facebookIntegers"
+              value={inputValue.facebookIntegers}
               onChange={handleChange}
             />
-            {error.twitterIntegers && (
-              <p className="error">{error.twitterIntegers}</p>
+            {error.facebookIntegers && (
+              <p className="error">{error.facebookIntegers}</p>
             )}
           </div>
 
@@ -338,18 +338,18 @@ const App = () => {
           </div>
 
           <div>
-            <label htmlFor="youtubeAadar">
-              Youtube (Digital Performance) <sup>*</sup>
+            <label htmlFor="linkedinAadar">
+              Linkedin (Digital Performance) <sup>*</sup>
             </label>
             <input
               type="number"
-              id="youtubeAadar"
-              name="youtubeAadar"
-              value={inputValue.youtubeAadar}
+              id="linkedinAadar"
+              name="linkedinAadar"
+              value={inputValue.linkedinAadar}
               onChange={handleChange}
             />
-            {error.youtubeAadar && (
-              <p className="error">{error.youtubeAadar}</p>
+            {error.linkedinAadar && (
+              <p className="error">{error.linkedinAadar}</p>
             )}
           </div>
         </div>

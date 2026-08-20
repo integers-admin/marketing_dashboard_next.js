@@ -10,13 +10,13 @@ export const marketingDashboard = async (req, res) => {
       youtubeUmang,
       pinterestUmang,
       instagramUmang,
-      othersUmang,
+      twitterUmang,
       instagramIntegers,
       youtubeIntegers,
-      twitterIntegers,
+      facebookIntegers,
       linkedinIntegers,
       instagramAadar,
-      youtubeAadar,
+      linkedinAadar,
     } = req.body;
 
     const query = `
@@ -28,13 +28,13 @@ export const marketingDashboard = async (req, res) => {
                 youtube_umang,
                 pinterest_umang,
                 instagram_umang,
-                others_umang,
+                twitter_umang,
                 instagram_integers,
                 youtube_integers,
-                twitter_integers,
+                facebook_integers,
                 linkedin_integers,
                 instagram_aadar,
-                youtube_aadar
+                linkedin_aadar
             )
             VALUES
             (
@@ -53,15 +53,15 @@ export const marketingDashboard = async (req, res) => {
       Number(youtubeUmang),
       Number(pinterestUmang),
       Number(instagramUmang),
-      Number(othersUmang),
+      Number(twitterUmang),
 
       Number(instagramIntegers),
       Number(youtubeIntegers),
-      Number(twitterIntegers),
+      Number(facebookIntegers),
       Number(linkedinIntegers),
 
       Number(instagramAadar),
-      Number(youtubeAadar),
+      Number(linkedinAadar),
     ];
 
     const result = await pool.query(query, values);

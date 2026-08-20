@@ -294,8 +294,8 @@ const IntegersDashboard = () => {
             />
 
             <Metric
-              label="Twitter"
-              value={formatNumber(integers_social_performance?.twitter_integers)}
+              label="Facebook"
+              value={formatNumber(integers_social_performance?.facebook_integers)}
               accent="#38bdf8"
               icon={I.send}
               brandValue

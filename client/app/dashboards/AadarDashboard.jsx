@@ -319,8 +319,8 @@ const AadarDashboard = () => {
             />
 
             <Metric
-              label="YouTube"
-              value={formatNumber(digitalPerformance?.data?.youtube_aadar)}
+              label="Linkedin"
+              value={formatNumber(digitalPerformance?.data?.linkedin_aadar)}
               sub=""
               accent="#ff5c5c"
               icon={I.play}

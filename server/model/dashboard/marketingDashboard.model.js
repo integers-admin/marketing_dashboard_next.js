@@ -12,13 +12,13 @@ export const createMarketingDashboardTable = async () => {
         youtube_umang INT DEFAULT 0,
         pinterest_umang INT DEFAULT 0,
         instagram_umang INT DEFAULT 0,
-        others_umang INT DEFAULT 0,
+        twitter_umang INT DEFAULT 0,
         instagram_integers INT DEFAULT 0,
         youtube_integers INT DEFAULT 0,
-        twitter_integers INT DEFAULT 0,
+        facebook_integers INT DEFAULT 0,
         linkedin_integers INT DEFAULT 0,
         instagram_aadar INT DEFAULT 0,
-        youtube_aadar INT DEFAULT 0,
+        linkedin_aadar INT DEFAULT 0,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );

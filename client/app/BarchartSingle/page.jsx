@@ -17,7 +17,7 @@ const BarChartSingle = ({ umang_market_data }) => {
     facebook_umang: "FB",
     youtube_umang: "YT",
     pinterest_umang: "PT",
-    others_umang: "Oth.",
+    twitter_umang: "TW",
   };
 
   const [socialData, setSocialData] = useState([]);
@@ -34,7 +34,7 @@ const BarChartSingle = ({ umang_market_data }) => {
       "facebook_umang",
       "youtube_umang",
       "pinterest_umang",
-      "others_umang",
+      "twitter_umang",
     ];
 
     const chartData = fields.map((key) => ({
